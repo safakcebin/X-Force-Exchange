@@ -1,16 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path');
 const xfe = require("xfe");
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 
-//app.use(express.static('public'))
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }));
-app.get('/', (request, response) => {
-    response.sendFile(path.join(__dirname, 'public/index.html'));
 
-}); 
 async function getThreatExhcangDate(domain){
 
     var xfeClient = new xfe("9d34bf79-ba8e-4b2a-8367-7e5bf67502c0", "384d6ce0-3a4c-4d4b-9a2b-864eec3e176b");
